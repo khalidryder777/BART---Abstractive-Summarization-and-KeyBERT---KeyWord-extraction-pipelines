@@ -24,18 +24,18 @@ This model is a pre-trained abstractive summarization model based on the BART (B
 
 
 ### 2. KeyWord Extraction using KeyBERT
-a. Other methods 
+#### a. Other methods 
 There are several method for keywords extraction such as TF-IDF and TextRank. These methods are rule-based or statistical in nature and do not use deep learning to understand the context and relationships between words in a text.
 
-b. Why KeyBERT
+#### b. Why KeyBERT
 KeyBERT is a deep learning-based method that leverages the power of pre-trained language models such as BERT to extract keywords from a text. 
 It can be a better choice as it leverages deep learning to understand/infer the context and the complex relationships between words and ideas in the text.
 
-c. About KeyBERT.
+#### c. About KeyBERT.
 KeyBERT is a keyword extraction model based on the BERT (Bidirectional Encoder Representations from Transformers) architecture.
 One of the key strengths of BERT architecture is its ability to process contextual information by looking at words both to the left and right of a target word which can help it in identifying the most important words or phrases in a text that convey its overall meaning.
 
-d. Pipeline explained
+#### d. Pipeline explained
 
 
 
