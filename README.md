@@ -7,14 +7,14 @@
 
 ### 1. Summarization using BART
 #### a. Two methods to summarize text: 
-**1)Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying meaning of the text.
+**Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying meaning of the text.
 
-**2)Abstractive summarization**, on the other hand, involves generating a new and condensed version of the original text that captures its essence. This approach requires a deeper understanding of the text and often involves generating new words, phrases, or sentences that are not present in the original text.
+**Abstractive summarization**, on the other hand, involves generating a new and condensed version of the original text that captures its essence. This approach requires a deeper understanding of the text and often involves generating new words, phrases, or sentences that are not present in the original text.
 
 #### b. Why abstractive Summarization?
 Abstractive summarization can be a better choice in scenarios where a more expressive summary is needed, and where a deeper understanding of the text is required. We'll be using a pretrained BART model provided on the Hugging Face website. 
 
-####c. About the model: "philschmid/bart-large-cnn-samsum"
+#### c. About the model: "philschmid/bart-large-cnn-samsum"
 This model is a pre-trained abstractive summarization model based on the BART (Bayesian Attention-based Recurrent Transformer) architecture. BART is based on the Transformer architecture and uses attention mechanisms to weight the importance of different parts of the input text when generating the summary. This specific model is fine-tuned on the "CNN/DailyMail" summarization dataset by Phil Schmid.
 
 #### d. Pipeline Explained
