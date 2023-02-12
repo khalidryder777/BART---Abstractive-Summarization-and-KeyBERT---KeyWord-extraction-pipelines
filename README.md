@@ -7,9 +7,9 @@
 
 ### 1. Summarization using BART
   #### a. Two methods to summarize text: 
-    **Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. 
-    This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying 
-    meaning of the text.
+   **Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. 
+   This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying 
+   meaning of the text.
 
 **Abstractive summarization**, on the other hand, involves generating a new and condensed version of the original text that captures its essence. This approach requires a deeper understanding of the text and often involves generating new words, phrases, or sentences that are not present in the original text.
 
