@@ -1,9 +1,9 @@
 # BART---Abstractive-Summarization-and-KeyBERT---KeyWord-extraction-pipelines
 
-##Methods
-###1. Summarization using BART
-###2. KeyWord Extraction using KeyBERT
-###3. Both have common steps afterwards of doing STS between the original and the output.
+## Methods
+### 1. Summarization using BART
+### 2. KeyWord Extraction using KeyBERT
+### 3. Both have common steps afterwards of doing STS between the original and the output.
 
 1. Summarization using BART
 a. Two methods to summarize text 1) Extractive Summarization 2) Abstractive Summarization
