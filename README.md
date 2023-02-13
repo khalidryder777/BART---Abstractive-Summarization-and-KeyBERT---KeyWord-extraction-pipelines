@@ -6,20 +6,69 @@
 ### 3. After this, both have common steps of doing [STS - Semantic Text Similarity](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) between the original and the output.
 
 ## 1. BART---Abstractive-Summarization
-  #### a. Two methods to summarize text: 
+  ### a. Two methods to summarize text: 
    **Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. 
    This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying 
    meaning of the text.
 
 **Abstractive summarization**, on the other hand, involves generating a new and condensed version of the original text that captures its essence. This approach requires a deeper understanding of the text and often involves generating new words, phrases, or sentences that are not present in the original text.
 
-#### b. Why abstractive Summarization?
+### b. Why abstractive Summarization?
 Abstractive summarization can be a better choice in scenarios where a more expressive summary is needed, and where a deeper understanding of the text is required. We'll be using a pretrained BART model provided on the Hugging Face website. 
 
-#### c. About the model: "philschmid/bart-large-cnn-samsum"
+### c. About the model: "philschmid/bart-large-cnn-samsum"
 This model is a pre-trained abstractive summarization model based on the BART (Bayesian Attention-based Recurrent Transformer) architecture. BART is based on the Transformer architecture and uses attention mechanisms to weight the importance of different parts of the input text when generating the summary. This specific model is fine-tuned on the "CNN/DailyMail" summarization dataset by Phil Schmid.
 
-#### d. Pipeline Explained
+### d. Pipeline Explained
+## i. Install and Import required libraries and modules:
+We used Jupyter Notebook from Anaconda distribution here. Please type the following in a notebook in Jupyter Notebook to install the libraries. Alternatively, the libraries can also be installed using the Conda terminal.
+```python
+!pip install transformers
+from transformers import pipeline
+import pandas as pd
+import numpy as np
+```
+## ii. Initialize the summarization pipeline with the pre-trained BART model: 'philschmid/bart-large-cnn-samsum' 
+```python
+#Hyperparameters: min_length = 5, max_length = 30
+summarizer = pipeline("summarization", model="philschmid/bart-large-cnn-samsum", min_length = 5, max_length = 30)
+```
+
+## iii. Testing some inputs
+```python
+conversation1 = '''I imagine, that I was friend with Ariel.
+I imagine we were going to get food.
+It can also be that we were walking to class together or commuting together.'''
+
+conversation2 = '''I picture the journey to Sam's house on a sunny day in New York. 
+I picture all of the different people I pass in their own worlds, and the cute apartments and shops I look into as I walk by. 
+I imagine myself making it to his house and it being warm out from the sun so we hang out in the backyard of his brownstone on a hammock.'''
+
+conversation3 = '''I met with Ariel and we decided that we were going to go on a walk to explore the city. 
+Ariel and I first decided that we were going to walk and get pizza before we went to sit in the park together. 
+After getting pizza, we walked toward the park to enjoy the beautiful weather outside. 
+Upon getting to the park, we sat and talked for hours, catching up.'''
+
+x = summarizer(conversation1)
+y = summarizer(conversation2)
+z = summarizer(conversation3)
+
+print(x)
+print(y)
+print(z)
+```
+    [{'summary_text': 'I imagine that Ariel and I were going to get food together.'}]
+    [{'summary_text': "Sam and I will hang out in the backyard of Sam's brownstone on a hammock when it's warm out."}]
+    [{'summary_text': 'Ariel and I went for a walk and got pizza before sitting in the park together.'}]
+
+
+
+
+
+
+
+
+
 
 
 ## 2. KeyBERT---KeyWord-extraction
