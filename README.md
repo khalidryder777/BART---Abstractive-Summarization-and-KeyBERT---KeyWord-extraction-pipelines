@@ -20,7 +20,7 @@ Abstractive summarization can be a better choice in scenarios where a more expre
 This model is a pre-trained abstractive summarization model based on the BART (Bayesian Attention-based Recurrent Transformer) architecture. BART is based on the Transformer architecture and uses attention mechanisms to weight the importance of different parts of the input text when generating the summary. This specific model is fine-tuned on the "CNN/DailyMail" summarization dataset by Phil Schmid.
 
 ### d. Pipeline Explained
-## i. Install and Import required libraries and modules:
+## I. Install and Import required libraries and modules:
 We used Jupyter Notebook from Anaconda distribution here. Please type the following in a notebook in Jupyter Notebook to install the libraries. Alternatively, the libraries can also be installed using the Conda terminal.
 ```python
 !pip install transformers
@@ -28,13 +28,13 @@ from transformers import pipeline
 import pandas as pd
 import numpy as np
 ```
-## ii. Initialize the summarization pipeline with the pre-trained BART model: 'philschmid/bart-large-cnn-samsum' 
+## II. Initialize the summarization pipeline with the pre-trained BART model: 'philschmid/bart-large-cnn-samsum' 
 ```python
 #Hyperparameters: min_length = 5, max_length = 30
 summarizer = pipeline("summarization", model="philschmid/bart-large-cnn-samsum", min_length = 5, max_length = 30)
 ```
 
-## iii. Testing some inputs
+## III. Testing some inputs
 ```python
 conversation1 = '''I imagine, that I was friend with Ariel.
 I imagine we were going to get food.
@@ -62,7 +62,7 @@ print(z)
     [{'summary_text': "Sam and I will hang out in the backyard of Sam's brownstone on a hammock when it's warm out."}]
     [{'summary_text': 'Ariel and I went for a walk and got pizza before sitting in the park together.'}]
 
-## iV. Load the dataset
+## IV. Load the dataset
 ```python
 df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
 
@@ -70,7 +70,7 @@ df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
 df.head()
 ```
 
-## v. Using summarizer to generate summaries of the input dataframe columns
+## V. Using summarizer to generate summaries of the input dataframe columns
 ```python
 # We have 4 such columns in our dataframe, so repeat for each column(no. 1,3,5,7) by changing the index values in '.iloc' 
 x1=[]
@@ -113,7 +113,7 @@ print(a1)
       [[{'summary_text': 'Taylor ate with Ariel during their break between classes. They went to a local pizza shop to get a quick bite. They ate there'}]
       [[{'summary_text': 'Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do'}]
 
-## Vi. Unpacking and storing the values iteratively
+## VI. Unpacking and storing the values iteratively
 ```python
 x2 = []
 for i in range(len(x1)):
@@ -143,7 +143,7 @@ print(a2)
       ['Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do',......]
       
       
-## Vii. Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
+## VII. Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
 
 
 ## 2. KeyBERT---KeyWord-extraction
@@ -160,7 +160,7 @@ One of the key strengths of BERT architecture is its ability to process contextu
 
 #### d. Pipeline explained
 
-## i. Install and Import required libraries and modules:
+## I. Install and Import required libraries and modules:
 We used Jupyter Notebook from Anaconda distribution here. Please type the following in a notebook in Jupyter Notebook to install the libraries. Alternatively, the libraries can also be installed using the Conda terminal.
 ```python
 !pip install keybert
@@ -172,12 +172,12 @@ import numpy as np
 import re
 
 ```
-## ii. Initialize the keyword extraction pipeline with the pre-trained KeyBERT model: 'all-mpnet-base-v2' 
+## II. Initialize the keyword extraction pipeline with the pre-trained KeyBERT model: 'all-mpnet-base-v2' 
 ```python
 kw_model = KeyBERT(model='all-mpnet-base-v2')
 ```
 
-## iii. Load the dataset
+## III. Load the dataset
 ```python
 df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
 
@@ -185,7 +185,7 @@ df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
 df.head(3)
 ```
 
-## iv. Removing the names from the data to reduce extraction redundency
+## IV. Removing the names from the data to reduce extraction redundency
 ```python
 # This import is repeated for better contextual understanding
 import re
@@ -209,7 +209,7 @@ for name in names_to_remove:
                                                    flags=re.IGNORECASE))
 ```
 
-## v. Preprocessing the text
+## V. Preprocessing the text
 ### a. Tokenization
 ### b. Lower Casing 
 ### c. Removing Stop Words
@@ -268,7 +268,7 @@ df['ES_ellab'][0]
       Output:
       ['imagine','friend','imagine','going','get','food','also','walking','class','together','commuting','together']
 
-## vi. Stitching the output lists to make a string.
+## VI. Stitching the output lists to make a string.
 ```python
 for i in range(len(df['ES_ellab'])):
   df['ES_ellab'][i] = ' '.join(df['ES_ellab'][i])
@@ -283,7 +283,7 @@ for i in range(len(df['AP_ellab'])):
   df['AP_ellab'][i] = ' '.join(df['AP_ellab'][i])
 ```
 
-## Vii. Extracting keywords from the sentences contained in the dataframe
+## VII. Extracting keywords from the sentences contained in the dataframe
 Below we are extracting keywords from sentences in a Pandas dataframe and storing them in a list of lists. For each row in the dataframe, a list of sentences is created, which is then passed as input to the "extract_keywords" method of a KeyBERT model. This method returns a list of keyword-probability pairs, from which the keywords are extracted and stored in a list. This list is then appended to a final list "x1." After the loop is complete, "x1" will contain a list of keywords for each row in the dataframe. 
 
 
@@ -312,7 +312,7 @@ print(x1)
       [['friend', 'imagine', 'commuting', 'walking', 'class'], ['brunch', 'pancake', 'dinner', 'eating', 'table']]
 
 
-## viii. Again similar to step vi, stitching the output lists of extracted keywords to make a string.
+## VIII. Again similar to step vi, stitching the output lists of extracted keywords to make a string.
 ```python
 ES_KeyBERT = x1
 
@@ -324,5 +324,5 @@ print(ES_KeyBERT)
       Output samples:
       ['friend imagine commuting walking class', 'brunch pancake dinner eating table']  
       
-## ix: Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
+## IX: Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
 
