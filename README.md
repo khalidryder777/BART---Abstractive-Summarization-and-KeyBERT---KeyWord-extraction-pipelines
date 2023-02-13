@@ -143,7 +143,7 @@ print(a2)
       ['Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do',......]
       
       
-## Vii. Add the summarized data columns in appropriate places in the Original data frame and run STS method which will take in the original text and the summary column and output the sumilarity score.
+## Vii. Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
 
 
 ## 2. KeyBERT---KeyWord-extraction
@@ -324,5 +324,5 @@ print(ES_KeyBERT)
       Output samples:
       ['friend imagine commuting walking class', 'brunch pancake dinner eating table']  
       
-## ix: Add the summarized data columns in appropriate places in the Original data frame and run STS method which will take in the original text and the summary column and output the sumilarity score.
+## ix: Add the summarized data columns in appropriate places in the Original data frame and run [STS - Semantic Text Similarity method](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) which will take in the original text and the summary column and output the sumilarity score. 
 
