@@ -265,5 +265,52 @@ df['AP_ellab'] = df['AP_ellab'].apply(lambda x:
 # Checkout one of the preprocessed texts
 df['ES_ellab'][0]
 ```
+      Output:
       ['imagine','friend','imagine','going','get','food','also','walking','class','together','commuting','together']
+
+## vi. Stitching the output lists to make a string.
+```python
+for i in range(len(df['ES_ellab'])):
+  df['ES_ellab'][i] = ' '.join(df['ES_ellab'][i])
+
+for i in range(len(df['EP_ellab'])):
+  df['EP_ellab'][i] = ' '.join(df['EP_ellab'][i])
+
+for i in range(len(df['AS_ellab'])):
+  df['AS_ellab'][i] = ' '.join(df['AS_ellab'][i])
+
+for i in range(len(df['AP_ellab'])):
+  df['AP_ellab'][i] = ' '.join(df['AP_ellab'][i])
+```
+
+# Vii. Extracting keywords from the sentences contained in the dataframe
+Below we are extracting keywords from sentences in a Pandas dataframe and storing them in a list of lists. For each row in the dataframe, a list of sentences is created, which is then passed as input to the "extract_keywords" method of a KeyBERT model. This method returns a list of keyword-probability pairs, from which the keywords are extracted and stored in a list. This list is then appended to a final list "x1." After the loop is complete, "x1" will contain a list of keywords for each row in the dataframe. 
+
+
+```python
+#Hyperparameters in 'extract_keywords' method: 
+#sentences = A list of sentences to extract keywords from. 
+#keyphrase_ngram_range = it's set to (1,1), which means that only single-word phrases will be considered as keywords.
+x1=[]
+for i in range(len(df)):
+
+  sentences = []
+  sentences.append(df.iloc[:,1][i])
+  #x = summarizer(sentences)
+  # x1.append(x)
+  keywords = kw_model.extract_keywords(sentences,keyphrase_ngram_range=(1,1),
+                                       stop_words='english',highlight=False,top_n=5)
+  keywords_list= list(dict(keywords).keys())
+  x1.append(keywords_list)
+  
+  #Repeat for rest of the dataframe columns where keyword extraction is needed.
+```
+```python
+print(x1)
+```
+      Output:
+      [['friend', 'imagine', 'commuting', 'walking', 'class'], ['brunch', 'pancake', 'dinner', 'eating', 'table']]
+
+
+
 
