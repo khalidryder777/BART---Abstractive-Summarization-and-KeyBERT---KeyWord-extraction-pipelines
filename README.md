@@ -57,13 +57,55 @@ print(x)
 print(y)
 print(z)
 ```
+    Output:
     [{'summary_text': 'I imagine that Ariel and I were going to get food together.'}]
     [{'summary_text': "Sam and I will hang out in the backyard of Sam's brownstone on a hammock when it's warm out."}]
     [{'summary_text': 'Ariel and I went for a walk and got pizza before sitting in the park together.'}]
 
+## iV. Load the dataset
+```python
+df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
 
+#Check out some of it
+df.head()
+```
 
-
+## v. Using summarizer to generate summaries of the input dataframe columns
+```python
+# We have 4 such columns in our dataframe, so repeat for each column(no. 1,3,5,7) by changing the index values in '.iloc' 
+x1=[]
+for i in range(len(df)):
+  sentences = []
+  sentences.append(df.iloc[:,1][i])
+  x = summarizer(sentences)
+  x1.append(x)
+  
+y1=[]
+for i in range(len(df)):
+  sentences = []
+  sentences.append(df.iloc[:,3][i])
+  y = summarizer(sentences)
+  y1.append(y)
+  
+z1=[]
+for i in range(len(df)):
+  sentences = []
+  sentences.append(df.iloc[:,5][i])
+  z = summarizer(sentences)
+  z1.append(z)
+  
+a1=[]
+for i in range(len(df)):
+  sentences = []
+  sentences.append(df.iloc[:,7][i])
+  a = summarizer(sentences)
+  a1.append(a)
+ 
+print(x1)
+print(y1)
+print(z1)
+print(a1)
+```
 
 
 
