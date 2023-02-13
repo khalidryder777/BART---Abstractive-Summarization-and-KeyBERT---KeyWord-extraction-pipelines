@@ -107,10 +107,40 @@ print(z1)
 print(a1)
 ```
 
+      Output samples:
+      [[{'summary_text': 'I imagine Ariel and I were going to get food together.'}], [{'summary_text': 'Sam and I are eating pancakes at the dinner table.'}]
+      [[{'summary_text': 'I visited Sam and Jessie between classes at their dorm and worked on their assignments. We went to eat before class and listened to'}]
+      [[{'summary_text': 'Taylor ate with Ariel during their break between classes. They went to a local pizza shop to get a quick bite. They ate there'}]
+      [[{'summary_text': 'Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do'}]
 
+## Vi. Unpacking and storing the values iteratively
+```python
+x2 = []
+for i in range(len(x1)):
+    x2.append(x1[i][0]['summary_text'])
+    
+y2 = []
+for i in range(len(y1)):
+    y2.append(y1[i][0]['summary_text'])    
 
-
-
+z2 = []
+for i in range(len(z1)):
+    z2.append(z1[i][0]['summary_text'])
+    
+a2 = []
+for i in range(len(a1)):
+    a2.append(a1[i][0]['summary_text'])
+    
+print(x2)
+print(y2)
+print(z2)
+print(a2)
+```
+      Output samples:
+      ['I imagine Ariel and I were going to get food together.',......]
+      ['I visited Sam and Jessie between classes at their dorm and worked on their assignments. We went to eat before class and listened to', ....]
+      ['Taylor ate with Ariel during their break between classes. They went to a local pizza shop to get a quick bite. They ate there',....]
+      ['Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do',......]
 
 
 ## 2. KeyBERT---KeyWord-extraction
