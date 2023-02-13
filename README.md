@@ -283,7 +283,7 @@ for i in range(len(df['AP_ellab'])):
   df['AP_ellab'][i] = ' '.join(df['AP_ellab'][i])
 ```
 
-# Vii. Extracting keywords from the sentences contained in the dataframe
+## Vii. Extracting keywords from the sentences contained in the dataframe
 Below we are extracting keywords from sentences in a Pandas dataframe and storing them in a list of lists. For each row in the dataframe, a list of sentences is created, which is then passed as input to the "extract_keywords" method of a KeyBERT model. This method returns a list of keyword-probability pairs, from which the keywords are extracted and stored in a list. This list is then appended to a final list "x1." After the loop is complete, "x1" will contain a list of keywords for each row in the dataframe. 
 
 
@@ -312,5 +312,14 @@ print(x1)
       [['friend', 'imagine', 'commuting', 'walking', 'class'], ['brunch', 'pancake', 'dinner', 'eating', 'table']]
 
 
+## viii. Again similar to step vi, stitching the output lists of extracted keywords to make a string.
+```python
+ES_KeyBERT = x1
 
-
+for i in range(len(ES_KeyBERT)):
+  ES_KeyBERT[i] = ' '.join(ES_KeyBERT[i])
+  
+print(ES_KeyBERT)
+```
+      Output samples:
+      ['friend imagine commuting walking class', 'brunch pancake dinner eating table']  
