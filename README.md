@@ -2,12 +2,10 @@
 # 1. BART---Abstractive-Summarization
 # 2. KeyBERT---KeyWord-extraction
 
-## Methods
-### 1. Summarization using BART
-### 2. KeyWord Extraction using KeyBERT
+
 ### 3. Both have common steps afterwards of doing STS between the original and the output.
 
-### 1. Summarization using BART
+## 1. BART---Abstractive-Summarization
   #### a. Two methods to summarize text: 
    **Extractive summarization** involves selecting the most important sentences or phrases from the original text and concatenating them to form a summary. 
    This approach is considered to be a more straightforward and computationally simpler method, as it does not require an understanding of the underlying 
@@ -24,8 +22,7 @@ This model is a pre-trained abstractive summarization model based on the BART (B
 #### d. Pipeline Explained
 
 
-
-### 2. KeyWord Extraction using KeyBERT
+## 2. KeyBERT---KeyWord-extraction
 #### a. Other methods 
 There are several method for keywords extraction such as TF-IDF and TextRank. These methods are rule-based or statistical in nature and do not use deep learning to understand the context and relationships between words in a text.
 
