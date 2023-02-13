@@ -3,7 +3,7 @@
 # 2. KeyBERT---KeyWord-extraction
 
 
-### 3. After this, both have common steps of doing [STS - Semantic Text Similarity](https://pages.github.com/](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) between the original and the output.
+### 3. After this, both have common steps of doing [STS - Semantic Text Similarity](https://github.com/khalidryder777/Semantic-Similarity---Higging-Face-pretrained-Transformers) between the original and the output.
 
 ## 1. BART---Abstractive-Summarization
   #### a. Two methods to summarize text: 
