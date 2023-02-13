@@ -141,6 +141,9 @@ print(a2)
       ['I visited Sam and Jessie between classes at their dorm and worked on their assignments. We went to eat before class and listened to', ....]
       ['Taylor ate with Ariel during their break between classes. They went to a local pizza shop to get a quick bite. They ate there',....]
       ['Taylor talked with Sam and Jessie as they waited for their professor to start the lecture. They made plans about what they would do',......]
+      
+      
+## Vii. Add the summarized data columns in appropriate places in the Original data frame and run STS method which will take in the original text and the summary column and output the sumilarity score.
 
 
 ## 2. KeyBERT---KeyWord-extraction
@@ -157,12 +160,110 @@ One of the key strengths of BERT architecture is its ability to process contextu
 
 #### d. Pipeline explained
 
+## i. Install and Import required libraries and modules:
+We used Jupyter Notebook from Anaconda distribution here. Please type the following in a notebook in Jupyter Notebook to install the libraries. Alternatively, the libraries can also be installed using the Conda terminal.
+```python
+!pip install keybert
+from keybert import KeyBERT
+
+import pandas as pd
+import numpy as np
+
+import re
+
+```
+## ii. Initialize the keyword extraction pipeline with the pre-trained KeyBERT model: 'all-mpnet-base-v2' 
+```python
+kw_model = KeyBERT(model='all-mpnet-base-v2')
+```
+
+## iii. Load the dataset
+```python
+df = pd.read_csv('/content/sample_data/ego_text.csv', encoding='cp1252')
+
+#Check out some of it
+df.head(3)
+```
+
+## iv. Removing the names from the data to reduce extraction redundency
+```python
+# This import is repeated for better contextual understanding
+import re
+
+names_to_remove = ["Ariel", "Sam", "Jessie", "Taylor"]
+
+for name in names_to_remove:
+    df["ES_ellab"] = df["ES_ellab"].apply(lambda x: re.sub(r"\b"+name+r"(?=\b)", "", x, 
+                                                   flags=re.IGNORECASE))
+
+for name in names_to_remove:
+    df["EP_ellab"] = df["EP_ellab"].apply(lambda x: re.sub(r"\b"+name+r"(?=\b)", "", x, 
+                                                   flags=re.IGNORECASE))
+
+for name in names_to_remove:
+    df["AS_ellab"] = df["AS_ellab"].apply(lambda x: re.sub(r"\b"+name+r"(?=\b)", "", x, 
+                                                   flags=re.IGNORECASE))
+
+for name in names_to_remove:
+    df["AP_ellab"] = df["AP_ellab"].apply(lambda x: re.sub(r"\b"+name+r"(?=\b)", "", x, 
+                                                   flags=re.IGNORECASE))
+```
+
+## v. Preprocessing the text
+### a. Tokenization
+### b. Lower Casing 
+### c. Removing Stop Words
+### d. Lemmatization 
+
+```python
+import nltk
+import string
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+
+stop_words = set(stopwords.words('english'))
+lemmatizer = WordNetLemmatizer()
+
+df['ES_ellab'] = df['ES_ellab'].apply(lambda x: 
+                                            [lemmatizer.lemmatize(word.lower()) 
+                                            for word in word_tokenize(x) 
+                                            if (word.lower() not in stop_words)
+                                            and (re.match("^[a-zA-Z]+$", word))
+                                            ]) 
+                                            
+
+df['EP_ellab'] = df['EP_ellab'].apply(lambda x: 
+                                            [lemmatizer.lemmatize(word.lower()) 
+                                            for word in word_tokenize(x) 
+                                            if (word.lower() not in stop_words)
+                                            and (re.match("^[a-zA-Z]+$", word))
+                                            ])
+
+df['AS_ellab'] = df['AS_ellab'].apply(lambda x: 
+                                            [lemmatizer.lemmatize(word.lower()) 
+                                            for word in word_tokenize(x) 
+                                            if (word.lower() not in stop_words)
+                                            and (re.match("^[a-zA-Z]+$", word))
+                                            ])
+
+df['AP_ellab'] = df['AP_ellab'].apply(lambda x: 
+                                            [lemmatizer.lemmatize(word.lower()) 
+                                            for word in word_tokenize(x) 
+                                            if (word.lower() not in stop_words)
+                                            and (re.match("^[a-zA-Z]+$", word))
+                                            ])
+```
 
 
-
-
-
-
-
-
+```python
+# Checkout one of the preprocessed texts
+df['ES_ellab'][0]
+```
+      ['imagine','friend','imagine','going','get','food','also','walking','class','together','commuting','together']
 
