@@ -1,4 +1,6 @@
-# BART---Abstractive-Summarization-and-KeyBERT---KeyWord-extraction-pipelines
+# Pipelines
+# 1. BART---Abstractive-Summarization
+# 2. KeyBERT---KeyWord-extraction
 
 ## Methods
 ### 1. Summarization using BART
